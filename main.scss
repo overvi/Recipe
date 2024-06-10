@@ -1,0 +1,124 @@
+@import "variables", "fonts";
+
+@import "./node_modules/bootstrap/scss/functions";
+
+@import "./node_modules/bootstrap/scss/variables";
+@import "./node_modules/bootstrap/scss/variables-dark";
+
+$utilities: (
+  "max-width": (
+    property: max-width,
+    class: mw,
+    values: (
+      25: 25rem,
+      50: 50rem,
+      75: 75rem,
+    ),
+  ),
+  "font-family": (
+    property: font-family,
+    class: ff,
+    values: (
+      outfit: "Outfit",
+      young: "Young-Serif",
+    ),
+  ),
+);
+
+@import "./node_modules/bootstrap/scss/maps";
+@import "./node_modules/bootstrap/scss/mixins";
+@import "./node_modules/bootstrap/scss/root";
+@import "./node_modules/bootstrap/scss/utilities";
+@import "./node_modules/bootstrap/scss/reboot";
+@import "./node_modules/bootstrap/scss/type";
+@import "./node_modules/bootstrap/scss/images";
+@import "./node_modules/bootstrap/scss/containers";
+@import "./node_modules/bootstrap/scss/grid";
+@import "./node_modules/bootstrap/scss/helpers";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "color":
+      map-merge(
+        map-get($utilities, "color"),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, "color"), "values"),
+              ($colors)
+            ),
+        )
+      ),
+  )
+);
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "rounded":
+      map-merge(
+        map-get($utilities, "rounded"),
+        (
+          responsive: true,
+        )
+      ),
+  )
+);
+
+@import "./node_modules/bootstrap/scss/utilities/api";
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+body {
+  background-color: var(--bs-peach-200);
+  font-family: "Outfit", Courier, monospace;
+  color: var(--bs-tan-700);
+}
+
+.preparation {
+  background-color: var(--bs-pink-100);
+}
+
+ol li::marker {
+  color: var(--bs-brick-700);
+  font-weight: bold;
+}
+
+th {
+  --bs-table-color-state: var(--bs-tan-700);
+}
+
+td {
+  --bs-table-color-state: var(--bs-brick-700);
+  font-weight: bold;
+}
+
+span {
+  color: var(--bs-tan-700);
+}
+
+.flow-content {
+  > * + * {
+    margin-top: 2.5rem;
+  }
+}
+
+section {
+  padding-bottom: 1.5rem;
+  margin-inline: 1rem;
+}
+
+@include media-breakpoint-up(md) {
+  section {
+    margin-inline: 3rem;
+  }
+}
